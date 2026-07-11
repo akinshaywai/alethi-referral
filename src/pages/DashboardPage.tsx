@@ -1,104 +1,106 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui"
-import { DollarSign, Link as LinkIcon, Users, TrendingUp } from "lucide-react"
+import { DollarSign, Link as LinkIcon, Users, TrendingUp, Copy, QrCode } from "lucide-react"
+import { Button } from "@/components/ui"
 
 export function DashboardPage() {
   return (
-    <div className="min-h-screen py-12 px-4">
+    <div className="min-h-screen bg-white py-8 px-4 sm:px-6">
       <div className="container mx-auto">
+        {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold">Affiliate Dashboard</h1>
-          <p className="text-muted-foreground">Track your earnings and referrals</p>
+          <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
+          <p className="mt-1 text-gray-600">Track your earnings and referrals in real-time</p>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Earnings</CardTitle>
-              <DollarSign className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">$2,345</div>
-              <p className="text-xs text-muted-foreground">Lifetime earnings</p>
-            </CardContent>
-          </Card>
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          {/* Total Earnings */}
+          <div className="bg-white border border-gray-200 rounded-lg p-6">
+            <div className="flex items-center justify-between mb-4">
+              <p className="text-sm font-medium text-gray-600">Total Earnings</p>
+              <div className="bg-blue-50 p-2 rounded-lg">
+                <DollarSign className="h-5 w-5 text-blue-600" />
+              </div>
+            </div>
+            <div className="text-3xl font-bold text-gray-900">$2,345</div>
+            <p className="mt-2 text-xs text-gray-600">Lifetime earnings</p>
+          </div>
 
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Referral Clicks</CardTitle>
-              <LinkIcon className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">1,234</div>
-              <p className="text-xs text-muted-foreground">Total clicks</p>
-            </CardContent>
-          </Card>
+          {/* Referral Clicks */}
+          <div className="bg-white border border-gray-200 rounded-lg p-6">
+            <div className="flex items-center justify-between mb-4">
+              <p className="text-sm font-medium text-gray-600">Referral Clicks</p>
+              <div className="bg-blue-50 p-2 rounded-lg">
+                <LinkIcon className="h-5 w-5 text-blue-600" />
+              </div>
+            </div>
+            <div className="text-3xl font-bold text-gray-900">1,234</div>
+            <p className="mt-2 text-xs text-gray-600">Total clicks</p>
+          </div>
 
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Conversions</CardTitle>
-              <Users className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">45</div>
-              <p className="text-xs text-muted-foreground">Premium subscribers</p>
-            </CardContent>
-          </Card>
+          {/* Conversions */}
+          <div className="bg-white border border-gray-200 rounded-lg p-6">
+            <div className="flex items-center justify-between mb-4">
+              <p className="text-sm font-medium text-gray-600">Conversions</p>
+              <div className="bg-blue-50 p-2 rounded-lg">
+                <Users className="h-5 w-5 text-blue-600" />
+              </div>
+            </div>
+            <div className="text-3xl font-bold text-gray-900">45</div>
+            <p className="mt-2 text-xs text-gray-600">Premium subscribers</p>
+          </div>
 
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Conversion Rate</CardTitle>
-              <TrendingUp className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">3.6%</div>
-              <p className="text-xs text-muted-foreground">Click to conversion</p>
-            </CardContent>
-          </Card>
+          {/* Conversion Rate */}
+          <div className="bg-white border border-gray-200 rounded-lg p-6">
+            <div className="flex items-center justify-between mb-4">
+              <p className="text-sm font-medium text-gray-600">Conversion Rate</p>
+              <div className="bg-blue-50 p-2 rounded-lg">
+                <TrendingUp className="h-5 w-5 text-blue-600" />
+              </div>
+            </div>
+            <div className="text-3xl font-bold text-gray-900">3.6%</div>
+            <p className="mt-2 text-xs text-gray-600">Click to conversion</p>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Referral Link */}
-          <Card className="lg:col-span-1">
-            <CardHeader>
-              <CardTitle>Your Referral Link</CardTitle>
-              <CardDescription>Share this link to earn commissions</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="bg-muted p-3 rounded-md break-all text-sm">
-                https://alethi.app/ref/ABC123456
-              </div>
-              <div className="flex gap-2">
-                <button className="flex-1 px-4 py-2 bg-primary text-primary-foreground rounded-md text-sm hover:bg-primary/90">
-                  Copy
-                </button>
-                <button className="flex-1 px-4 py-2 border border-input rounded-md text-sm hover:bg-muted">
-                  QR Code
-                </button>
-              </div>
-            </CardContent>
-          </Card>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Referral Link Card */}
+          <div className="border border-gray-200 rounded-lg p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-1">Your Referral Link</h3>
+            <p className="text-sm text-gray-600 mb-4">Share this link to earn commissions</p>
+
+            <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 mb-4 break-all">
+              <p className="text-sm font-mono text-gray-900">https://alethi.app/ref/ABC123456</p>
+            </div>
+
+            <div className="flex gap-2">
+              <Button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white" size="sm">
+                <Copy className="h-4 w-4 mr-2" />
+                Copy
+              </Button>
+              <Button className="flex-1 border border-gray-300 text-gray-700 hover:bg-gray-50" variant="outline" size="sm">
+                <QrCode className="h-4 w-4 mr-2" />
+                QR Code
+              </Button>
+            </div>
+          </div>
 
           {/* Recent Commissions */}
-          <Card className="lg:col-span-2">
-            <CardHeader>
-              <CardTitle>Recent Commissions</CardTitle>
-              <CardDescription>Your latest earnings</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {[1, 2, 3].map((i) => (
-                  <div key={i} className="flex items-center justify-between py-3 border-b last:border-0">
-                    <div>
-                      <p className="font-medium">Customer {i}</p>
-                      <p className="text-sm text-muted-foreground">Premium Plan</p>
-                    </div>
-                    <span className="font-semibold">$6.00</span>
+          <div className="lg:col-span-2 border border-gray-200 rounded-lg p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-1">Recent Commissions</h3>
+            <p className="text-sm text-gray-600 mb-6">Your latest earnings</p>
+
+            <div className="space-y-4">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="flex items-center justify-between py-3 border-b border-gray-100 last:border-0">
+                  <div>
+                    <p className="font-medium text-gray-900">Customer {i}</p>
+                    <p className="text-sm text-gray-600">Premium Plan</p>
                   </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+                  <span className="font-semibold text-gray-900">$6.00</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
