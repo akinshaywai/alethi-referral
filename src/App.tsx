@@ -1,6 +1,7 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
 import { MainLayout } from "@/layouts/MainLayout"
-import { HomePage } from "@/pages/HomePage"
+import { SignInPage } from "@/pages/SignInPage"
+import { SignUpPage } from "@/pages/SignUpPage"
 import { ApplyPage } from "@/pages/ApplyPage"
 import { DashboardPage } from "@/pages/DashboardPage"
 import "@/styles/index.css"
@@ -9,14 +10,11 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <MainLayout>
-              <HomePage />
-            </MainLayout>
-          }
-        />
+        {/* Auth Routes - No Layout */}
+        <Route path="/login" element={<SignInPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
+
+        {/* App Routes - With Layout */}
         <Route
           path="/apply"
           element={
@@ -33,6 +31,9 @@ function App() {
             </MainLayout>
           }
         />
+
+        {/* Default redirect to login */}
+        <Route path="/" element={<Navigate to="/login" replace />} />
       </Routes>
     </Router>
   )
